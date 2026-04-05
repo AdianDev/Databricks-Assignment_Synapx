@@ -6,6 +6,51 @@ Assignment
 
 
 Gold layer ER model preview: 
+erDiagram
+    DIM_PATIENT ||--o{ FACT_ENCOUNTER : has
+    DIM_PATIENT ||--o{ FACT_CONDITION : has
+    DIM_PATIENT ||--o{ FACT_OBSERVATION : has
+    DIM_ENCOUNTER ||--o{ FACT_ENCOUNTER : relates
+
+    DIM_PATIENT {
+        string patient_key PK
+        string patient_id
+        string gender
+        string birth_date
+        string city
+        string state
+        string country
+    }
+
+    FACT_ENCOUNTER {
+        string encounter_key PK
+        string patient_key FK
+        string status
+        string period_start
+        string period_end
+    }
+
+    FACT_CONDITION {
+        string condition_id PK
+        string patient_key FK
+        string encounter_key FK
+        string condition_text
+        boolean is_current
+    }
+
+    FACT_OBSERVATION {
+        string observation_id PK
+        string patient_key FK
+        string encounter_key FK
+        string value_quantity
+        string loinc_code
+    }
+
+    DIM_ENCOUNTER {
+        string encounter_key PK
+        string encounter_id
+        string organization
+    }
                     ┌───────────────────┐
                     │    dim_patient    │
                     │-------------------│
