@@ -5,4 +5,5 @@ So, here are the improvements I was planning to make before improvement:
 2. In silver table I want CDF to be enabled. So, we can track the changes and can be applied to bronze as well than we might not need version id.
 3. In gold layer introduce CDC based on silver table. So, if I a record is become inactive in silver it will get deleted from gold and only new or updated ones will be updated in silver.
 
-So, these are the additional improvements I was thinking but there can be many more the longer time I spend the more improvement I could have done. 
+So, these are the additional improvements I was thinking but I intentionally focused on delivering a clean, working Medallion architecture first.
+Once that baseline was stable, I identified improvements like CDF-based change tracking and CDC-driven Gold layer to make it production-ready. 
